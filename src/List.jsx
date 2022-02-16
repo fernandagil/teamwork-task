@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import CharInfo from './CharInfo';
 
 class List extends Component {
     render() {
@@ -9,6 +10,14 @@ class List extends Component {
                 {
                     people.map((p) => {
                         console.log(p)
+
+                        // displays the characters 
+                        return (
+                            <div key={p.url}>
+                                <h1 className="char-name">{p.name}</h1>
+                                <CharInfo charInfo={p} />
+                            </div> 
+                        )
                     })
                 }
             </div>
