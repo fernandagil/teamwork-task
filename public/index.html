@@ -13,12 +13,18 @@
         <title>Teamwork Task</title>
     </head>
     <body>
+        <div class="container-fluid bg-dark text-white">
+            <div class="col-12">
+                <section class="jumbotron text-center py-5">
+                    <h1 class="my-6">Inhabitants of the Galaxy</h1>
+                </section>
+            </div>
+        </div>
         <div class="container-fluid bg-dark bg-gradient text-white p-5">
             <div class="row">
-                <div class="col-12">
-                    <section class="jumbotron text-center bg-dark py-4 my-5">
-                        <h1 class="my-6">Inhabitants of the Galaxy</h1>
-                    </section>
+                <div class="col-8 offset-2 mb-5">
+                    <div class="search-container"></div>
+                    <button type="button" id="button" name="button" class="btn btn-warning">Search</button>
                 </div>
             </div>
 
@@ -28,6 +34,8 @@
                 </div>
             </div>
         </div>
+
+        <script src="app.js"></script>
 
     </body>
 </html>

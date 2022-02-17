@@ -16,7 +16,6 @@ class CharInfo extends Component {
                     <li>Mass: {info.mass}</li>
                     <li>Created: {info.created}</li>
                     <li>Edited: {info.edited}</li>
-                    <li>Planet Name: {info.homeworld}</li>
                 </ul>
             </div>
 
