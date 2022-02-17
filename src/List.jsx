@@ -14,7 +14,7 @@ class List extends Component {
                         // displays the characters 
                         return (
                             <div key={p.url}>
-                                <h1 className="char-name">{p.name}</h1>
+                                <h2 className="char-name">{p.name}</h2>
                                 <CharInfo charInfo={p} />
                             </div> 
                         )
