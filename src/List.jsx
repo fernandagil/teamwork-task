@@ -12,11 +12,10 @@ class List extends Component {
                         console.log(p)
 
                         // displays the characters 
-                        return (
-                            <div key={p.url}>
-                                <h2 className="char-name">{p.name}</h2>
+                        return ( 
+                            <tr key={p.url}>
                                 <CharInfo charInfo={p} />
-                            </div> 
+                            </tr> 
                         )
                     })
                 }

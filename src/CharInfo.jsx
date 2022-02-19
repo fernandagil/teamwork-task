@@ -10,15 +10,13 @@ class CharInfo extends Component {
         const info = this.props.charInfo;
 
         return (
-            <div className="user-details">
-                <ul>
-                    <li>Height: {info.height}</li>
-                    <li>Mass: {info.mass}</li>
-                    <li>Created: {info.created}</li>
-                    <li>Edited: {info.edited}</li>
-                </ul>
-            </div>
-
+            <p className="user-details">
+                <td>{info.name}</td>
+                <td>{info.height}</td>
+                <td>{info.mass}</td>
+                <td>{info.created}</td>
+                <td>{info.edited}</td>
+            </p>
         );
     }
 }
