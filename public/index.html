@@ -33,10 +33,37 @@
             </div>
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-10 offset-1">
                     <div class="info-container">
-                        <h2 id="name"></h2>
+                        <!-- <h2 id="name"></h2>
+                        <p id="height"></p>
+                        <p id="mass"></p>
+                        <p id="created"></p>
+                        <p id="edited"></p>
+                        <p id="homeworld"></p> -->
+
+                        <table>
+                            <tr>
+                                <th>Name</th>
+                                <th>Height</th>
+                                <th>Mass</th>
+                                <th>Created</th>
+                                <th>Edited</th>
+                                <th>Planet Name</th>
+                            </tr>
+                            <tr>
+                                <td id="name">{info.name}</td>
+                                <td id="height">{info.height}</td>
+                                <td id="mass">{info.mass}</td>
+                                <td id="created">{info.created}</td>
+                                <td id="edited">{info.edited}</td>
+                                <td id="homeworld">{info.homeworld}</td>
+                            </tr>
+  
+                        </table>
                     </div>
+
+
                     <div id="root"></div>
 
                     

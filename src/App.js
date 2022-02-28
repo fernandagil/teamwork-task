@@ -44,6 +44,11 @@ import axios from 'axios';
 
 let button = document.querySelector('#button');
 let name = document.querySelector('#name');
+let height = document.querySelector('#height');
+let mass = document.querySelector('#mass');
+let created = document.querySelector('#created');
+let edited = document.querySelector('#edited');
+let homeworld = document.querySelector('#homeworld');
 
 function getInfo() {
 
@@ -56,7 +61,12 @@ function getInfo() {
 }
 
 function updateInfo(data) {
-    name.innerText = data.name
+    name.innerText = data.name;
+    height.innerText = data.height;
+    mass.innerText = data.mass;
+    created.innerText = data.created;
+    edited.innerText = data.edited;
+    homeworld.innerText = data.homeworld;
 }
 
 button.addEventListener('click', getInfo);
