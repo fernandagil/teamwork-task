@@ -1,6 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import List from './List';
 import axios from 'axios';
+
+function App() {
+    const [people, setPeople] = useState([]);
+    const [currentPageUrl, setCurrentPageUrl] = useState('https://swapi.dev/api/people');
+    const [nextPageUrl, setNextPageUrl] = useState();
+    const [prevPageUrl, setPrevPageUrl] = useState();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        axios.get(currentPageUrl).then(res => {
+            setLoading(false);
+            setNextPageUrl(res.data.next); // https://swapi.dev/api/people/?page=2
+            setPrevPageUrl(res.data.previous);
+            setPeople(res.data.results.map(p => p.name));
+        });
+    }, [currentPageUrl]);
+
+    return (
+        <List people={people} />
+    );
+
+}
+
 
 
 // class App extends Component {
@@ -42,42 +66,42 @@ import axios from 'axios';
 
 // search people
 
-let button = document.querySelector('#button');
-let name = document.querySelector('#name');
-let height = document.querySelector('#height');
-let mass = document.querySelector('#mass');
-let created = document.querySelector('#created');
-let edited = document.querySelector('#edited');
-let homeworld = document.querySelector('#homeworld');
+// let button = document.querySelector('#button');
+// let name = document.querySelector('#name');
+// let height = document.querySelector('#height');
+// let mass = document.querySelector('#mass');
+// let created = document.querySelector('#created');
+// let edited = document.querySelector('#edited');
+// let homeworld = document.querySelector('#homeworld');
 
-function getInfo() {
+// function getInfo() {
 
-    let randomNumber = Math.floor((Math.random() * 88) + 1);
-    let apiUrl = 'https://swapi.dev/api/people/' + randomNumber;
+//     let randomNumber = Math.floor((Math.random() * 88) + 1);
+//     let apiUrl = 'https://swapi.dev/api/people/' + randomNumber;
 
-    axios.get(apiUrl).then(function(response){
-        updateInfo(response.data);
-    }).catch(e => {
-        updateInfoWithError(); 
-    });
-}
+//     axios.get(apiUrl).then(function(response){
+//         updateInfo(response.data);
+//     }).catch(e => {
+//         updateInfoWithError(); 
+//     });
+// }
 
-function updateInfo(data) {
-    name.innerText = data.name;
-    height.innerText = data.height;
-    mass.innerText = data.mass;
-    created.innerText = data.created;
-    edited.innerText = data.edited;
-    homeworld.innerText = data.homeworld;
-}
+// function updateInfo(data) {
+//     name.innerText = data.name;
+//     height.innerText = data.height;
+//     mass.innerText = data.mass;
+//     created.innerText = data.created;
+//     edited.innerText = data.edited;
+//     homeworld.innerText = data.homeworld;
+// }
 
-function updateInfoWithError() {
-    name.innerText = 'That person is not available';
-    height.innerText = '';
-    mass.innerText = '';
-    created.innerText = '';
-    edited.innerText = '';
-    homeworld.innerText = '';
-}
+// function updateInfoWithError() {
+//     name.innerText = 'That person is not available';
+//     height.innerText = '';
+//     mass.innerText = '';
+//     created.innerText = '';
+//     edited.innerText = '';
+//     homeworld.innerText = '';
+// }
 
-button.addEventListener('click', getInfo);
+// button.addEventListener('click', getInfo);
