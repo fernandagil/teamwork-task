@@ -57,6 +57,8 @@ function getInfo() {
 
     axios.get(apiUrl).then(function(response){
         updateInfo(response.data);
+    }).catch(e => {
+        updateInfoWithError(); 
     });
 }
 
@@ -67,6 +69,15 @@ function updateInfo(data) {
     created.innerText = data.created;
     edited.innerText = data.edited;
     homeworld.innerText = data.homeworld;
+}
+
+function updateInfoWithError() {
+    name.innerText = 'That person is not available';
+    height.innerText = '';
+    mass.innerText = '';
+    created.innerText = '';
+    edited.innerText = '';
+    homeworld.innerText = '';
 }
 
 button.addEventListener('click', getInfo);
