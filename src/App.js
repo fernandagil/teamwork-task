@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import List from './List';
-import axios from "axios";
+import axios from 'axios';
+
 
 class App extends Component {
     constructor(props) {
@@ -14,7 +15,7 @@ class App extends Component {
     }
 
     getPeople() {
-        return axios.get("https://swapi.dev/api/people")
+        return axios.get('https://swapi.dev/api/people')
         .then((response) => {
             console.log(response.data.results);
             this.setState( { people: response.data.results } );
@@ -29,7 +30,7 @@ class App extends Component {
     render() {
         const {people} = this.state;
         return (
-            <div className="App">
+            <div className='App'>
                 <List people={people} />
             </div>
         );
@@ -39,4 +40,12 @@ class App extends Component {
 export default App;
 
 
+// search people
+
 let button = document.querySelector('#button')
+
+function sayHello() {
+    console.log('hello')
+}
+
+button.addEventListener('click', sayHello)

@@ -7,18 +7,28 @@ class List extends Component {
 
         return (
             <div className="">
-                {
-                    people.map((p) => {
-                        console.log(p)
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Height</th>
+                        <th>Mass</th>
+                        <th>Created</th>
+                        <th>Edited</th>
+                    </tr>
+                    {
+                        people.map((p) => {
+                            console.log(p)
 
-                        // displays the characters 
-                        return ( 
-                            <tr key={p.url}>
-                                <CharInfo charInfo={p} />
-                            </tr> 
-                        )
-                    })
-                }
+                            // displays the characters 
+                            return (
+
+                                <div key={p.url}>
+                                    <CharInfo charInfo={p} />
+                                </div> 
+                            )
+                        })
+                    }
+                </table>
             </div>
         );
     }
