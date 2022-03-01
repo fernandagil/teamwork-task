@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PeopleList from './PeopleList';
 import axios from 'axios';
+import Pagination from './Pagination';
 
-function App() {
+export default function App() {
     const [people, setPeople] = useState([]);
     const [currentPageUrl, setCurrentPageUrl] = useState('https://swapi.dev/api/people');
     const [nextPageUrl, setNextPageUrl] = useState();
@@ -16,20 +17,32 @@ function App() {
             cancelToken: new axios.CancelToken(c => cancel = c)
         }).then(res => {
             setLoading(false);
-            setNextPageUrl(res.data.next); // https://swapi.dev/api/people/?page=2
+            setNextPageUrl(res.data.next);
             setPrevPageUrl(res.data.previous);
             setPeople(res.data.results.map(p => p.name));
         });
 
-        return () => cancel.cancel()
+        return () => cancel();
     }, [currentPageUrl]);
 
-    
+    function gotoNextPage() {
+        setCurrentPageUrl(nextPageUrl);
+    }
+
+    function gotoPrevPage() {
+        setCurrentPageUrl(prevPageUrl);
+    }
 
     if (loading) return 'Loading...'
 
     return (
-        <PeopleList people={people} />
+        <>
+            <PeopleList people={people} />
+            <Pagination
+                gotoNextPage={nextPageUrl ? gotoNextPage : null}	
+                gotoPrevPage={prevPageUrl ? gotoPrevPage : null}
+            />
+        </>
     );
 
 }
