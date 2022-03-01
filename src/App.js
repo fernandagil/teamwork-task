@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
-import List from './List';
+import React, { useState, useEffect } from 'react';
+import PeopleList from './PeopleList';
 import axios from 'axios';
 
 function App() {
@@ -11,16 +11,25 @@ function App() {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(currentPageUrl).then(res => {
+        let cancel;
+        axios.get(currentPageUrl, {
+            cancelToken: new axios.CancelToken(c => cancel = c)
+        }).then(res => {
             setLoading(false);
             setNextPageUrl(res.data.next); // https://swapi.dev/api/people/?page=2
             setPrevPageUrl(res.data.previous);
             setPeople(res.data.results.map(p => p.name));
         });
+
+        return () => cancel.cancel()
     }, [currentPageUrl]);
 
+    
+
+    if (loading) return 'Loading...'
+
     return (
-        <List people={people} />
+        <PeopleList people={people} />
     );
 
 }

@@ -1,15 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 
 
-export default function List({ people }) {
+export default function PeopleList({ people }) {
     return (
-        <div>
-            {people.map(p => (
-                <div key={p}>{p}</div>
-            ))}
-        </div>
+      <div>
+        {people.map(p => (
+          <div key={p}>{p}</div>
+        ))}
+      </div>
     );
 }
+
 
 // class List extends Component {
 //     render() {
